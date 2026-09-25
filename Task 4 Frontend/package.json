@@ -1,6 +1,7 @@
 {
   "name": "front-end",
   "version": "1.0.0",
+  "type": "module",
   "description": "A premium, highly interactive, client-side single-page application (SPA) built to explore, optimize, and analyze vehicle insurance claims and detect fraudulent patterns. The application uses the Minitab **Vehicle Insurance Fraud** dataset (1000 claims, 39 features) and provides a professional suite of visualization, statistical analysis, predictive modeling, and data preparation tools.",
   "main": "app.js",
   "scripts": {
