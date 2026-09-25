@@ -61,29 +61,11 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Configure CORS
-# In production on Render/Vercel, set CORS_ORIGINS via environment variables
-raw_origins = os.getenv("CORS_ORIGINS", "")
-allowed_origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
-
-if raw_origins.strip():
-    for origin in raw_origins.split(","):
-        cleaned = origin.strip()
-        if cleaned and cleaned not in allowed_origins:
-            allowed_origins.append(cleaned)
-
-# If wildcard is set or for flexible deployments:
-allow_all = "*" in allowed_origins
-
+# Configure CORS for flexible deployment (Vercel + Localhost)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"] if allow_all else allowed_origins,
-    allow_credentials=True if not allow_all else False,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
